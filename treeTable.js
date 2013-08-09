@@ -47,11 +47,15 @@ function makeTree(data, id, ref, kids) {
 	return tree
 }
 
-function renderTree(tree, kids, id, attrs, renderer) {
+function renderTree(tree, kids, id, attrs, renderer, tableAttributes) {
+	tableAttributes = tableAttributes || {}
 	var maxLevel = 0;
 	var ret = []
 
 	var table = $("<table>")
+	$.each(tableAttributes, function(key, value){
+		table.attr(key, value)
+	})
 	var thead = $("<thead>")
 	var tr = $("<tr>")
 	var tbody = $("<tbody>")
@@ -72,7 +76,6 @@ function renderTree(tree, kids, id, attrs, renderer) {
 	}
 
 	function render(node, parent) {
-		console.debug(node, parent)
 		var tr = $("<tr>")
 		$(tr).attr('data-tt-id', node[id])
 		$(tr).attr('data-tt-level', node['data-tt-level'])
@@ -176,21 +179,30 @@ function treeTable(table){
 	})
 }
 
-
+function inALine(nodes) {
+	var tr = $('<tr>')
+	$.each(nodes, function(i, node){
+		tr.append($('<td style="padding-right: 20px;">').append(node))
+	})
+	return $('<table border="0"/>').append(tr)
+	
+}
 function appendTreetable(tree, options) {
 	options.idAttr = (options.idAttr || 'id')
 	options.childrenAttr = (options.childrenAttr || 'children')
+	options.controls = (options.controls || [])
+
 	if (!options.mountPoint)
 		options.mountPoint = $('body')
 	
 	if (options.depthFirst)
 		depthFirst(tree, options.childrenAttr, options.depthFirst)
 	var rendered = renderTree(tree, options.childrenAttr, options.idAttr,
-			options.renderedAttr, options.renderer)
+			options.renderedAttr, options.renderer, options.tableAttributes)
 
 	treeTable(rendered)
 	
-	var slider = $('<div>')
+	var slider = $('<div style="margin-right: 15px;">')
 	slider.width('200px')
 	slider.slider({
 		min : 1,
@@ -201,11 +213,12 @@ function appendTreetable(tree, options) {
 			expandLevel(rendered, ui.value)
 		}
 	})
-
+    
 	if (options.replaceContent) {
 		options.mountPoint.html('')
 	}
-	options.mountPoint.append(slider)
+	var controls = [slider].concat(options.controls)
+	options.mountPoint.append(inALine(controls))
 	options.mountPoint.append(rendered)
 	return rendered
 }
