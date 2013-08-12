@@ -54,7 +54,11 @@ function renderTree(tree, kids, id, attrs, renderer, tableAttributes) {
 
 	var table = $("<table>")
 	$.each(tableAttributes, function(key, value){
-		table.attr(key, value)
+		if(key == 'class' && value != 'jsTT') {
+			table.addClass(value)
+		} else {
+			table.attr(key, value)			
+		}
 	})
 	var thead = $("<thead>")
 	var tr = $("<tr>")
@@ -130,6 +134,7 @@ function attr2field(nodes, attrs){
 }
 
 function treeTable(table){
+	table.addClass('jsTT')
 	var dat = $("tr[data-tt-level]", table).get()
 	$.each(dat,  function(j, d) {
 		d.trChildrenVisible = true
