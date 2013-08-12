@@ -14,7 +14,7 @@ I wrote it, because integrating the original with Atlassian products was way too
 ## Requirements
 
 ```html
-<script src="epiceditor.min.js"></script>
+<script src="bla.js"></script>
 ```
 
 ```javascript
