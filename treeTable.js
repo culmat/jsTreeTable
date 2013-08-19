@@ -1,3 +1,5 @@
+var com_github_culmat_jsTreeTable =  (function(){
+
 function depthFirst(tree, kids, func) {
 	function i_depthFirst(node) {
 		if (node[kids]) {
@@ -12,7 +14,7 @@ function depthFirst(tree, kids, func) {
 	})
 }
 
-var makeTree = function (data, id, ref, kids) {
+function makeTree (data, id, ref, kids) {
 	id = id || 'id'
 	ref = ref || 'parent'
 	kids = kids || 'children'
@@ -232,3 +234,16 @@ function appendTreetable(tree, options) {
 	options.mountPoint.append(rendered)
 	return rendered
 }
+
+return {
+	depthFirst : depthFirst,
+	makeTree : makeTree,
+	renderTree : renderTree,
+	attr2field : attr2field,
+	treeTable : treeTable,
+	appendTreetable : appendTreetable,
+	register : function(target){
+		$.each(this, function(key, value){ if(key != 'register') target[key] = value})
+	}
+}
+})();

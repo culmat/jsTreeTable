@@ -62,14 +62,9 @@ table.jsTT tr[data-tt-level="3"] td:first-child{
 
 </head>
 <body>
-    <!-- 
-    <p>slkdf slkdfj lskdjf <img height="20" width="20" src="https://fedoraproject.org/w/uploads/2/29/Artwork_DesignService_fedora-spinner.gif"></p>
-    <p>slkdf slkdfj lskdjf <img height="20" width="20" src="http://www.iab.net/extra/adquickref/spinnerLarge.gif"></p>
-    <p>slkdf slkdfj lskdjf <img height="20" width="20" src="http://www.recognitiongrader.com/img/spinner.gif"></p>
-     -->
-    <p>slkdf slkdfj lskdjf </p>
-	<div id="container" >table loading <img height="20" width="20" src="http://www.markit.com/assets/images/spinner.gif"></div>
-    <p>slkdf slkdfj lskdjf </p>
+    <hr/>
+      	<div id="container" >table loading <img height="20" width="20" src="http://www.markit.com/assets/images/spinner.gif"></div>
+    <hr/>
 
 
 	
@@ -146,15 +141,23 @@ table.jsTT tr[data-tt-level="3"] td:first-child{
 				}
 			}
 	
-		appendTreetable(makeTree(makeData(), 'name') , options)
+		com_github_culmat_jsTreeTable.register(this)
+		
+		var jsTT = com_github_culmat_jsTreeTable
+		
+		appendTreetable(jsTT.makeTree(makeData(), 'name') , options)
 		
 		
 		
-		appendTreetable( makeTree(makeData(), 'name') , {
+		jsTT.appendTreetable(jsTT.makeTree(makeData(), 'name') , {
 			idAttr : 'name',
 			intialEpandLevel : 2,
 			slider : true
 		})
+		
+		
+	
+		
 		
 	</script>
 
