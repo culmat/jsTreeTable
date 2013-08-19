@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>depthFirst</title>
+<script src="http://code.jquery.com/jquery-2.0.3.js"></script>
+<script src="../treeTable.js"></script>
+
+
+</head>
+<body>
+<button onClick='window.location="view-source:" + window.location.href'>View Source</button>
+<button onClick='window.history.back()'>Back</button><br/>
+
+	<script type="text/javascript">
+		com_github_culmat_jsTreeTable.register(this)
+
+		function countDecendants(node) {
+			var desc = 0
+			if (node['children']) {
+				$.each(node['children'], function(i, child) {
+					console.log(child)
+					desc += child['descendants'] + 1
+				})
+			}
+			node['descendants'] = desc
+		}
+
+		var tree = {
+			a : {
+				id : 'a',
+				children : {
+					a : {
+						id : 'a.a',
+						children : {
+							c :{id : 'a.a.c'}
+						}
+					},
+					b : {
+						id : 'a.b'
+					}
+				}
+			},
+			b : {
+				id : 'b',
+			}
+		}
+
+		depthFirst(tree, countDecendants)
+		$('body').append('<span>Branch a has ' + tree.a.descendants + ' descendants</span>')
+	</script>
+
+
+</body>
+</html>

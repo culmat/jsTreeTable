@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>depthFirst</title>
+<script src="http://code.jquery.com/jquery-2.0.3.js"></script>
+<script src="../treeTable.js"></script>
+
+
+</head>
+<body>
+<button onClick='window.location="view-source:" + window.location.href'>View Source</button>
+<button onClick='window.history.back()'>Back</button><br/>
+
+	<script type="text/javascript">
+		com_github_culmat_jsTreeTable.register(this)
+
+		var data = [{
+			      id : 'Harold',
+			      geb : 1933,
+			      parent : 'Robert'
+			    }, {
+			      id : 'Robert',
+			      geb : 1903,
+			      parent : 'John'
+			    }, {
+			      id : 'Thomas',
+			      geb : 2008,
+			      parent : 'Mathew'
+			    }, {
+			      id : 'Mathew',
+			      geb : 1977,
+			      parent : 'Harold'
+			    }, {
+			      id : 'Andrew',
+			      geb : 1974,
+			      parent : 'Harold'
+			    }, {
+			      id : 'Kate',
+			      geb : 2008,
+			      parent : 'Mathew'
+			    }, {
+			      id : 'Walter',
+			      geb : 1900,
+			      parent : 'John'
+			    }, {
+			      id : 'Michelle',
+			      geb : 2023,
+			      parent : 'Thomas'
+			    }
+			    , {
+			      id : 'James',
+			      geb : 1900,
+			      parent : 'Kate'
+			    }]
+			    
+			   var tree =  makeTree(data)
+			    
+			  
+			   $('body').append('<pre>' +  JSON.stringify(tree) + '</pre>')
+			   
+			    //appendTreetable(tree)
+	</script>
+
+
+</body>
+</html>

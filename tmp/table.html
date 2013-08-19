@@ -57,6 +57,15 @@ table.jsTT tr[data-tt-level="2"] td:first-child{
 table.jsTT tr[data-tt-level="3"] td:first-child{
 	background-color:  #f1f2f0;
 }
+table.jsTT tr:hover td{
+  font-style : italic;
+  border-bottom: 1px solid #999;
+}
+
+table.jsTT tr:hover td:first-child{
+  font-style : inherit;
+  border-bottom: inherit;
+}
 
 </style>
 
@@ -148,15 +157,11 @@ table.jsTT tr[data-tt-level="3"] td:first-child{
 		appendTreetable(jsTT.makeTree(makeData(), 'name') , options)
 		
 		
-		
 		jsTT.appendTreetable(jsTT.makeTree(makeData(), 'name') , {
 			idAttr : 'name',
 			intialEpandLevel : 2,
 			slider : true
 		})
-		
-		
-	
 		
 		
 	</script>
