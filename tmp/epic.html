@@ -1,0 +1,104 @@
+<html>
+<head>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>EpicEditor</title>
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<link href="http://strapdownjs.com/v/0.2/themes/cerulean.min.css"
+	rel="stylesheet">
+<link href="http://strapdownjs.com/v/0.2/strapdown.css" rel="stylesheet">
+<link
+	href="http://strapdownjs.com/v/0.2/themes/bootstrap-responsive.min.css"
+	rel="stylesheet">
+</head>
+<body style="">
+<div id="wrapper"></div>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<div class="brand" id="headline">EpicEditor</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container" id="content">
+		<h1>Import Them</h1>
+		<p>A given directory structure grouping some eclipse projects to
+			their working sets and Importing them by hand is a cumbersome job.
+			Especially when this is a regular job. To automate this work you can
+			use the Import Them standard feature or write your own in groovy.</p>
+		<h3>install</h3>
+		<p>
+			via <a href="http://baloise.github.io/importthem/updatesite/">update
+				site</a>
+		</p>
+		<p>Extra Groovy compilers/Groovy Compiler 2.0 Feature</p>
+		<p>Groovy-Eclipse/Groovy-Eclipse Feature</p>
+		<p>Uncategorized/JDT Core patch for Groovy-Eclipse plugin</p>
+		<h3>Manual</h3>
+		<p>In the preference page of eclipse you can see the currently
+			used groovy script with the standard behaviour.</p>
+		<p>
+			<img alt="Eclipse Preference Page" src="images/preferences.PNG">
+		</p>
+		<p>When switching to Development you have an Import Them project
+			in your workspace and can edit the groovy script.</p>
+		<p>If you have a folder in your workspace (only possible in
+			Package Explorer not in Project Explorer) with a folder and project
+			structure like:</p>
+		<p>
+			<img alt="Folder Structure" src="images/projectTree.PNG">
+		</p>
+		<p>With the standard behaviour we will get two working sets sub1
+			and sub 2 where sub1 contains the projects sub1proj1 and sub1proj2.
+			Working set sub2 would contain sub2proj2. When in Development mode
+			right clicking the projects folder and selecting Import Them will
+			execute a dry-run.</p>
+		<p>Expect you modified the standard behaviour like:</p>
+		<p>
+			<img alt="Mod Script" src="images/modScript.PNG">
+		</p>
+		<p>The dry-run will then show the following result.</p>
+		<p>
+			<img alt="Dry Run" src="images/dryRun.PNG">
+		</p>
+		<p>The parameters of the script are map and selection.</p>
+		<p>The key of the map is the name of the working set, when using
+			seekProjects it is the name of the parent parent folder of the
+			.project file.</p>
+		<p>Selection are the selected folders in the package explorer. The
+			selection could be traversed in the groovy script itself,
+			seekProjects is just a default behaviour. In the example script the
+			resulting map is edited by replacing sub1 with module1 and so on.</p>
+		<p>
+			An example project can be found <a title="Example project"
+				href="http://baloise.github.io/importthem/itexample.zip">here</a>.
+		</p>
+	</div>
+<script type="text/javascript">
+
+
+$('#wrapper').before('<div id="toc"><ul id="toc-list"></ul></div>');
+
+$("h1, h2, h3").each(function (idx, val) {
+  var h = $(this)
+    , title = h.text()
+    , link = title.toLowerCase().replace(/(\,|\(|\)|\[|\]|\:|\.)/g, '').replace(/\s/g, '-')
+
+  // The first h2 is always the EpicEditor TOC header injected above
+  // Give them all IDs so there's something to hook into
+  if (idx > 0) {
+    h.attr("id", link);
+  }
+  if (idx > 0) {
+    h.html('<a href="#' + link + '">' + title + '</a>');
+    $("#toc-list").append('<li class="toc-' + this.nodeName.toLowerCase() + '"><a id="" href="#' + link + '">' + title + '</a></li>');
+  }
+});
+
+
+</script>
+
+		
+
+</body>
+</html>

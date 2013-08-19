@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8" />
 <title>table2</title>
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 
-<link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+ 
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
 <!-- treetable -->
@@ -16,17 +16,18 @@
 	href="http://ludo.cubicphuse.nl/jquery-treetable/stylesheets/jquery.treetable.theme.default.css" />
 <script type="text/javascript"
 	src="http://ludo.cubicphuse.nl/jquery-treetable/javascripts/src/jquery.treetable.js"></script>
-<script src="treeTable.js"></script>
+<script src="../treeTable.js"></script>
 <style type="text/css">
-table
+table.jsTT 
 {
 	margin-top : 10px;
 	border-collapse:collapse;
 	table-layout:fixed;
 	border: 1px solid #686a66;
 } 
-th {
+table.jsTT th {
   background-color: #9a9c97;
+  color : white;
   border: 1px solid #686a66;
   padding-left: 8px;
   padding-right: 8px;
@@ -40,20 +41,20 @@ dbdfd8
 f1f2f0
 
 */
-td {
+table.jsTT td {
     position : static;
 	border-left: 1px solid #999;
 	border-right: 1px solid #999;
 	padding-left: 8px;
 	padding-right: 8px;
 }
-tr[data-tt-level="1"] td:first-child{
+table.jsTT tr[data-tt-level="1"] td:first-child{
 	background-color:  #c6c9c3;
 }
-tr[data-tt-level="2"] td:first-child{
+table.jsTT tr[data-tt-level="2"] td:first-child{
 	background-color:  #dbdfd8;
 }
-tr[data-tt-level="3"] td:first-child{
+table.jsTT tr[data-tt-level="3"] td:first-child{
 	background-color:  #f1f2f0;
 }
 
@@ -139,15 +140,20 @@ tr[data-tt-level="3"] td:first-child{
 				idAttr : 'name',
 				renderedAttr : { name : 'Name', childCount : '# Children', descendants : '# Descendants', geb : 'Year of birth' },
 				depthFirst: enrich,
-				replaceContent : true
+				replaceContent : true,
+				tableAttributes : {
+					class: 'jsTT'
+				}
 			}
 	
-		appendTreetable( makeTree(makeData(), 'name') , options)
+		appendTreetable(makeTree(makeData(), 'name') , options)
 		
 		
 		
 		appendTreetable( makeTree(makeData(), 'name') , {
 			idAttr : 'name',
+			intialEpandLevel : 2,
+			slider : true
 		})
 		
 	</script>

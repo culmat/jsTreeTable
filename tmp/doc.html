@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>jsTreeTable</title>
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<style type="text/css">
+#toc {
+	position: fixed;
+	top: 70px;
+	left: 0px;
+}
+
+</style>
+</head>
+<body>
+	<xmp theme="Cerulean" style="display:none;"></xmp>
+	
+		<script type="text/javascript">
+
+		function buildTOC() {
+			console.log('toc')
+			$('body').append('<div id="toc"><ul id="toc-list"></ul></div>');
+			
+			$("h1, h2, h3").each(function (idx, val) {
+			  console.log(val)
+			    var h = $(this)
+			    , title = h.text()
+			    , link = title.toLowerCase().replace(/(\,|\(|\)|\[|\]|\:|\.)/g, '').replace(/\s/g, '-')
+				h.attr("id", link)
+			    h.html('<a href="#' + link + '">' + title + '</a>');
+			    $("#toc-list").append('<li class="toc-' + this.nodeName.toLowerCase() + '"><a id="" href="#' + link + '">' + title + '</a></li>');
+			  
+			})
+		}
+
+
+</script>
+	
+	<script type="text/javascript">
+		var url = 'http://culmat.github.io/jsTreeTable/README.md'
+		//url = 'https://raw.github.com/culmat/jsTreetable/gh-pages/README.md'
+		var url2 = 'http://markdown.io/_raw/' + url
+		$.ajax({
+			url : url2,
+			dataType:'text'
+		}).done(
+				function(data) {
+					
+					$('xmp').text(data)
+					$.getScript('http://strapdownjs.com/v/0.2/strapdown.js',
+							function() {
+								buildTOC()
+								
+							})
+					
+				})
+	</script>
+
+	
+</body>
+</html>

@@ -1,14 +1,3 @@
-function expandLevel(node, n) {
-	$("tr[data-tt-level]", node).each(function(index) {
-		var level = parseInt($(this).attr('data-tt-level'))
-		if (level > n-1) {
-			this.trCollapse(true)
-		} else if (level == n-1){
-			this.trExpand(true)
-		}
-	})
-}
-
 function depthFirst(tree, kids, func) {
 	function i_depthFirst(node) {
 		if (node[kids]) {
@@ -23,7 +12,7 @@ function depthFirst(tree, kids, func) {
 	})
 }
 
-function makeTree(data, id, ref, kids) {
+var makeTree = function (data, id, ref, kids) {
 	id = id || 'id'
 	ref = ref || 'parent'
 	kids = kids || 'children'
@@ -46,7 +35,6 @@ function makeTree(data, id, ref, kids) {
 	})
 	return tree
 }
-
 function renderTree(tree, kids, id, attrs, renderer, tableAttributes) {
 	tableAttributes = tableAttributes || {}
 	var maxLevel = 0;
@@ -135,6 +123,16 @@ function attr2field(nodes, attrs){
 
 function treeTable(table){
 	table.addClass('jsTT')
+	table.expandLevel = function (n) {
+		$("tr[data-tt-level]", table).each(function(index) {
+			var level = parseInt($(this).attr('data-tt-level'))
+			if (level > n-1) {
+				this.trCollapse(true)
+			} else if (level == n-1){
+				this.trExpand(true)
+			}
+		})
+	}
 	var dat = $("tr[data-tt-level]", table).get()
 	$.each(dat,  function(j, d) {
 		d.trChildrenVisible = true
@@ -184,18 +182,19 @@ function treeTable(table){
 	})
 }
 
-function inALine(nodes) {
-	var tr = $('<tr>')
-	$.each(nodes, function(i, node){
-		tr.append($('<td style="padding-right: 20px;">').append(node))
-	})
-	return $('<table border="0"/>').append(tr)
-	
-}
+
 function appendTreetable(tree, options) {
+	function inALine(nodes) {
+		var tr = $('<tr>')
+		$.each(nodes, function(i, node){
+			tr.append($('<td style="padding-right: 20px;">').append(node))
+		})
+		return $('<table border="0"/>').append(tr)
+		
+	}
 	options.idAttr = (options.idAttr || 'id')
 	options.childrenAttr = (options.childrenAttr || 'children')
-	options.controls = (options.controls || [])
+	var controls = (options.controls || [])
 
 	if (!options.mountPoint)
 		options.mountPoint = $('body')
@@ -206,24 +205,30 @@ function appendTreetable(tree, options) {
 			options.renderedAttr, options.renderer, options.tableAttributes)
 
 	treeTable(rendered)
-	
-	var slider = $('<div style="margin-right: 15px;">')
-	slider.width('200px')
-	slider.slider({
-		min : 1,
-		max : tree[0].maxLevel,
-		range : "min",
-		value : tree[0].maxLevel,
-		slide : function(event, ui) {
-			expandLevel(rendered, ui.value)
-		}
-	})
-    
 	if (options.replaceContent) {
 		options.mountPoint.html('')
 	}
-	var controls = [slider].concat(options.controls)
-	options.mountPoint.append(inALine(controls))
+	var intialEpandLevel = options.intialEpandLevel ? parseInt(options.intialEpandLevel) : -1
+	intialEpandLevel = Math.min(intialEpandLevel, tree[0].maxLevel)
+	rendered.expandLevel(intialEpandLevel)
+	if(options.slider){
+		var slider = $('<div style="margin-right: 15px;">')
+		slider.width('200px')
+		slider.slider({
+			min : 1,
+			max : tree[0].maxLevel,
+			range : "min",
+			value : intialEpandLevel,
+			slide : function(event, ui) {
+				rendered.expandLevel(ui.value)
+			}
+		})
+		controls = [slider].concat(options.controls)
+	}
+	
+    if(controls.length >0){
+    	options.mountPoint.append(inALine(controls))    	
+    }
 	options.mountPoint.append(rendered)
 	return rendered
 }

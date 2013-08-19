@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>jsTreeTable</title>
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<style type="text/css">
+#toc {
+	position: fixed;
+	top: 70px;
+	left: 0px;
+	width: 15%;
+	padding: 10px;
+}
+body {
+	 background-image:url(olivier_bright.jpg),url(table7.jpg); 
+	 background-repeat:no-repeat, repeat-y; 
+	 background-position:-400px bottom, right top;
+ 	 background-attachment:fixed, scroll;
+
+}
+.toc-h2 {
+	padding-left: 0px;
+}
+.toc-h3 {
+	padding-left: 15px;
+}
+.toc-h4 {
+	padding-left: 30px;
+}
+#toc-list{
+	list-style-type:none;
+}
+#toc-list a{
+	text-decoration: none;
+}
+#toc-list li:HOVER{
+	border-right: 2px solid #ccc;
+}
+
+
+#content{
+	margin-left: 20%;
+	padding-left: 20px;
+	width: 70%;
+	background-color: white;
+	opacity: 0.95;
+}
+
+</style>
+</head>
+<body data-spy="scroll" data-target="#toc">
+	<xmp theme="Cerulean" style="display:none;"># jsTreeTable
+
+jsTreeTable is a clone of [jQuery treetable](http://ludo.cubicphuse.nl/jquery-treetable/).
+I wrote it, because integrating the original with Atlassian products was way too complicated. This version is very light weight and and uses compatible table definitions.
+
+## Features
+
+* unobtrusive
+* light weigth
+* self contained: no external images ...
+* helper functions for dynamic tables
+* [jQuery treetable](http://ludo.cubicphuse.nl/jquery-treetable/) compatible
+
+## Requirements
+Some version of [jQuery](http://jquery.com/), i.e.
+
+```html
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+```
+
+If you want to use the [slider](#slider) function, some version of [jQuery UI](http://jqueryui.com/), i.e.
+
+```html
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+```
+
+## Providing data
+Either provide pre rendered tables ([example1]()) ...
+```html
+<table>
+  <tr data-tt-id="1">
+    <td>Parent</td>
+  </tr>
+  <tr data-tt-id="2" data-tt-parent-id="1">
+    <td>Child</td>
+  </tr>
+</table>
+```
+... or dynamically create the table from any data structure, e.g. JSON obtained by an AJAX call.
+
+## API
+
+### renderTree
+
+```javascript
+function renderTree(tree, kids, id, attrs, renderer, tableAttributes)
+```
+
+paramter | description | required | default 
+--- | --- | --- | ---
+tree | the tree data | X | -
+
+### Rendering options
+
+#### Slider
+
+
+
+
+## best of 2</xmp>
+		<script type="text/javascript">
+
+		function buildTOC() {
+			$('body').append('<div id="toc" class="well sidebar-nav"><ol id="toc-list" ></ol></div>');
+			
+			$("h2, h3, h4").each(function (idx, val) {
+			    var h = $(this)
+			    , title = h.text()
+			    , link = title.toLowerCase().replace(/(\,|\(|\)|\[|\]|\:|\.)/g, '').replace(/\s/g, '-')
+				h.attr("id", link)
+			    h.html('<a href="#' + link + '">' + title + '</a>');
+			    $("#toc-list").append('<li class="toc-' + this.nodeName.toLowerCase() + '"><a id="" href="#' + link + '">' + title + '</a></li>');
+			  
+			})
+		}
+
+
+</script>
+	
+	<script type="text/javascript" src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+	<script type="text/javascript">
+		
+								buildTOC()
+								$('.navbar').first().remove()
+								$('#content').addClass('well')
+
+								
+	</script>
+
+	
+</body>
+</html>
