@@ -2,10 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>depthFirst</title>
+<title>makeTree</title>
 <script src="http://code.jquery.com/jquery-2.0.3.js"></script>
 <script src="../treeTable.js"></script>
+<style type="text/css">
+.left {
+    float: left;
+    width: 250px;   
+}
+.middle {
+    margin-left: 300px;
+    width: 450px;   
+}
 
+</style>
 
 </head>
 <body>
@@ -54,14 +64,14 @@
 			      parent : 'Kate'
 			    }]
 			    
-			   var tree =  makeTree(data)
-			    
-			  
-			   $('body').append('<pre>' +  JSON.stringify(tree) + '</pre>')
+			   $('body').append('<pre class="prettyprint left"><code class="language-javascript">' +  JSON.stringify(data, null, 2) + '</code></pre>')
 			   
-			    //appendTreetable(tree)
+			   var tree =  makeTree(data)
+			   
+			   $('body').append('<pre class="prettyprint middle"><code class="language-javascript">' +  JSON.stringify(tree, null, 2) + '</code></pre>')
 	</script>
 
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 
 </body>
 </html>

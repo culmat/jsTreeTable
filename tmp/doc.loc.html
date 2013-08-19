@@ -12,9 +12,7 @@
 	padding: 10px;
 }
 body {
-	 /*
 	 background-image:url(olivier_bright.jpg),url(table7.jpg); 
-	 */
 	 background-repeat:no-repeat, repeat-y; 
 	 background-position:-400px bottom, right top;
  	 background-attachment:fixed, scroll;
@@ -51,7 +49,9 @@ body {
 </style>
 </head>
 <body data-spy="scroll" data-target="#toc">
-	<xmp theme="Cerulean" style="display:none;"># jsTreeTable
+	<xmp theme="Cerulean" style="display:none;">
+
+# jsTreeTable
 
 jsTreeTable is a clone of [jQuery treetable](http://ludo.cubicphuse.nl/jquery-treetable/).
 I wrote it, because integrating the original with Atlassian products was way too complicated. This version is very light weight and and uses compatible table definitions.
@@ -168,6 +168,8 @@ tableAttributes |  additional table attributes (ie id or class). Can be useful f
 
 **Returns** an html table as javascript object.
 
+[Example](renderTree.html)
+
 ###   attr2attr
 
 A simple helper funtion that copies attributes from javascript objects onto the DOM.
@@ -186,34 +188,47 @@ attrs | an array of attribute names | X |
 Adds functions to expand / collapse a tree table.
 Styling needs to be done externally.
 
+```javascript
+function treeTable(table)
+```
+
+paramter | description | required | default 
+--- | --- | --- | ---
+table | the table dom node with data-tt-* attributes | X | 
+
+**Returns** the input parameter nodes
+
+For an example see [appendTreetable](#appendtreetable)
+
 ###   appendTreetable 
 
 ```javascript
-function appendTreetable(tree, options)
+function 	(tree, options)
 ```
 
 paramter | description | required | default 
 --- | --- | --- | ---
 tree | the tree data | X | 
-options | |  | 
+options | see below |  | 
 
 option | description | required | default 
 --- | --- | --- | ---
 idAttr | the attribute used to identify a node |  | 'id' 
 childrenAttr | the attribute used to navigate the hierarchical tree structure|  | 'children' 
-controls | | | 
-mountPoint | |  | $('body')
-depthFirst | |  | 
-renderer | |  | 
-renderedAttr | | |
-tableAttributes | |  | 
-replaceContent | | | false 
-intialExpandLevel | | |  
-slider | wether to display| | false
+controls | controls you want to add to the top of the table  | | 
+mountPoint | where to appaend the table into the DOM |  | $('body')
+depthFirst | funtion to be applied prior to rendering see [depthFirst](#depthfirst)|  | 
+renderer | see [renderTree](#rendertree) |  | 
+renderedAttr |see [renderTree](#rendertree) | |
+tableAttributes | see [renderTree](#rendertree) |  | 
+replaceContent | wether to empty the mount point before appending, useful for activity indicators | | false 
+initialExpandLevel | 1 .. infinity | |  
+slider | wether to display an expand slider control | | false
 
 
 **Returns** an html table as javascript object obtained by calling [renderTree](#rendertree)
 
+[Example](appendTreetable.html)
 
 ###   jsTreeTable 
 

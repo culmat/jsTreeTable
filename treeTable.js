@@ -187,6 +187,7 @@ var com_github_culmat_jsTreeTable =  (function(){
 				this.trChildrenVisible ? this.trCollapse(true) : this.trExpand(true)
 			})
 		})
+		return table
 	}
 	
 	
@@ -216,9 +217,9 @@ var com_github_culmat_jsTreeTable =  (function(){
 		if (options.replaceContent) {
 			options.mountPoint.html('')
 		}
-		var intialExpandLevel = options.intialExpandLevel ? parseInt(options.intialExpandLevel) : -1
-		intialExpandLevel = Math.min(intialExpandLevel, tree[0].maxLevel)
-		rendered.expandLevel(intialExpandLevel)
+		var initialExpandLevel = options.initialExpandLevel ? parseInt(options.initialExpandLevel) : -1
+		initialExpandLevel = Math.min(initialExpandLevel, tree[0].maxLevel)
+		rendered.expandLevel(initialExpandLevel)
 		if(options.slider){
 			var slider = $('<div style="margin-right: 15px;">')
 			slider.width('200px')
@@ -226,7 +227,7 @@ var com_github_culmat_jsTreeTable =  (function(){
 				min : 1,
 				max : tree[0].maxLevel,
 				range : "min",
-				value : intialExpandLevel,
+				value : initialExpandLevel,
 				slide : function(event, ui) {
 					rendered.expandLevel(ui.value)
 				}
