@@ -19,12 +19,12 @@ var com_github_culmat_jsTreeTable =  (function(){
 	/*
 	 * make a deep copy of the object
 	 */
-	function copy(){
+	function copy(data){
 		return JSON.parse(JSON.stringify(data))
 	}
 	
 	function makeTree (data, idAttr, refAttr, childrenAttr) {
-		var data_tmp = copy(data)
+		var data_tmp = data
 		idAttr = idAttr || 'id'
 		refAttr = refAttr || 'parent'
 		childrenAttr = childrenAttr || 'children'

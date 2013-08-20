@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>table2</title>
+<title>appendTreetable</title>
 <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 
 
@@ -80,37 +80,54 @@ table.jsTT tr:hover td:first-child {
 		<tr>
 			<td><input type="checkbox"></td>
 			<td>slider</td>
-			<td>alsdkjas</td>
+			<td><input type="text" size="40" value="true"></td>
 		</tr>
 		<tr>
 			<td><input type="checkbox"></td>
 			<td>controls</td>
-			<td>alsdkjas</td>
+			<td><textarea rows="5" cols="40">{
+  $('&lt;button&gt;Kaboom&lt;/button&gt;'), 
+  $('&lt;span&gt;Some text&lt;/span&gt;')
+}</textarea></td>
 		</tr>
 		<tr>
 			<td><input type="checkbox"></td>
 			<td>depthFirst</td>
-			<td>alsdkjas</td>
+			<td><textarea rows="15" cols="80">function enrich(node) {
+	var desc = 0
+	var childCount = 0
+	if (node['children']) {
+		$.each(node['children'], function(i, child) {
+			desc += child['descendants'] + 1
+		})
+		childCount = node['children'].length
+	}
+	node['descendants'] = desc
+	node['childCount'] = childCount
+}</textarea></td>
 		</tr>
 		<tr>
 			<td><input type="checkbox"></td>
 			<td>renderedAttr</td>
-			<td>alsdkjas</td>
+			<td><textarea rows="5" cols="40">{
+  name : 'Name',
+  geb : 'Year of birth'
+}</textarea>
 		</tr>
 		<tr>
 			<td><input type="checkbox"></td>
 			<td>renderer</td>
-			<td>alsdkjas</td>
+			<td><textarea rows="5" cols="40"></textarea></td>
 		</tr>
 		<tr>
 			<td><input type="checkbox"></td>
 			<td>tableAttributes</td>
-			<td>alsdkjas</td>
+			<td><input type="text" size="40" value="true"></td>
 		</tr>
 		<tr>
 			<td><input type="checkbox"></td>
 			<td>initialExpandLevel</td>
-			<td>alsdkjas</td>
+			<td><input type="text" size="40" value="true"></td>
 		</tr>
 	</table>
 	<div id="paramsJSON">
