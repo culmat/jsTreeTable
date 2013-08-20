@@ -64,10 +64,8 @@
 			      parent : 'Kate'
 			    }]
 			    
-			   $('body').append('<pre class="prettyprint left"><code class="language-javascript">' +  JSON.stringify(data, null, 2) + '</code></pre>')
-			   
 			   var tree =  makeTree(data)
-			   
+			   $('body').append('<pre class="prettyprint left"><code class="language-javascript">' +  JSON.stringify(data, null, 2) + '</code></pre>')
 			   $('body').append('<pre class="prettyprint middle"><code class="language-javascript">' +  JSON.stringify(tree, null, 2) + '</code></pre>')
 	</script>
 

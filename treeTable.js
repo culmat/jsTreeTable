@@ -16,17 +16,25 @@ var com_github_culmat_jsTreeTable =  (function(){
 		return tree
 	}
 	
+	/*
+	 * make a deep copy of the object
+	 */
+	function copy(){
+		return JSON.parse(JSON.stringify(data))
+	}
+	
 	function makeTree (data, idAttr, refAttr, childrenAttr) {
+		var data_tmp = copy(data)
 		idAttr = idAttr || 'id'
 		refAttr = refAttr || 'parent'
 		childrenAttr = childrenAttr || 'children'
 	
 		var byName = []
-		$.each(data, function(i, entry) {
+		$.each(data_tmp, function(i, entry) {
 			byName[entry[idAttr]] = entry
 		})
 		var tree = []
-		$.each(data, function(i, entry) {
+		$.each(data_tmp, function(i, entry) {
 			var parent = byName[entry[refAttr]]
 			if (parent) {
 				if (!parent[childrenAttr]) {
