@@ -12,12 +12,22 @@
 	padding: 10px;
 }
 body {
-	 background-image:url(olivier_bright.jpg),url(table7.jpg); 
+	 background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='100' height='100'><line x1='40' y1='30' x2='75' y2='30' style='stroke:rgb(100,100,100);stroke-width:2'/></svg>"); 
+	 background-repeat: repeat-y; 
+	 background-position: right top;
+ 	 background-attachment: scroll;
+
+}
+
+/*
+body {
+	 background-image:url(olivier_bright.jpg),url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='100' height='100'><line x1='40' y1='30' x2='75' y2='30' style='stroke:rgb(100,100,100);stroke-width:2'/></svg>"); 
 	 background-repeat:no-repeat, repeat-y; 
 	 background-position:-400px bottom, right top;
  	 background-attachment:fixed, scroll;
 
 }
+*/
 .toc-h2 {
 	padding-left: 0px;
 }
@@ -37,6 +47,15 @@ body {
 	border-right: 2px solid #ccc;
 }
 
+#chart {
+	left: 0;
+    position: fixed;
+    top: 0px;
+    width: 50%;
+    height: 100%;
+	z-index:-10;
+}
+
 
 #content{
 	margin-left: 20%;
@@ -45,6 +64,18 @@ body {
 	background-color: white;
 	opacity: 0.95;
 }
+
+/* SVG styling */
+svg {
+	width: 840px;
+	height: 600px;
+	font-family: helvetica, sans-serif;
+}
+
+path, line {
+	stroke: #777;
+}
+
 
 </style>
 </head>
@@ -264,6 +295,11 @@ A property holding the version of jsTreeTable
 								
 	</script>
 
-	
+<div id="chart" >
+			<svg>
+			</svg>
+		</div>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="tree.js"></script>
 </body>
 </html>
