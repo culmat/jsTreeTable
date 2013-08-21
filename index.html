@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>jsTreeTable</title>
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<link rel="stylesheet" type="text/css" href="doc/style.css">
+</head>
+<body>
+<div id="chart" >
+			<svg>
+			</svg>
+		</div>
+	<xmp theme="Cerulean" style="display:none;"></xmp>
+	
+		<script type="text/javascript">
+
+		function buildTOC() {
+			$('body').append('<div id="toc" class="well sidebar-nav nav"><ol id="toc-list" ></ol></div>');
+			
+			$("h2, h3, h4").each(function (idx, val) {
+			    var h = $(this)
+			    , title = h.text()
+			    , link = title.toLowerCase().replace(/(\,|\(|\)|\[|\]|\:|\.)/g, '').replace(/\s/g, '-')
+				h.attr("id", link)
+			    h.html('<a href="#' + link + '">' + title + '</a>');
+			    $("#toc-list").append('<li class="toc-' + this.nodeName.toLowerCase() + '"><a id="" href="#' + link + '">' + title + '</a></li>');
+			  	$('.navbar-inner').css('border-radius','0 4px 4px 0')
+			  	$('.navbar-inner').css('box-shadow','none')
+			  	$('#headline').css('cursor','pointer')
+			  	$('#headline').click(function() {
+			  		window.scrollTo(0, 0);
+			  	})
+			  	
+			})
+		}
+
+
+</script>
+	
+	<script type="text/javascript">
+		function makeLinksLocal(){
+			$('a').each(function(i, link){
+				var href = $(link).attr('href')
+				var prefix = 'http://culmat.github.io/jsTreeTable/'
+				if(href.indexOf(prefix) == 0)
+					$(link).attr('href',href.substr(prefix.length))
+			})
+		}
+	
+		var DEV = window.location.protocol == 'file:'
+		var url = 'http://culmat.github.io/jsTreeTable/README.md'
+		var markdown_io = 'http://markdown.io/_raw/' + url
+		if(DEV)
+			markdown_io = 'README.md'
+		$.ajax({
+			url : markdown_io,
+			dataType:'text'
+		}).done(
+				function(data) {
+					
+					$('xmp').text(data)
+					$.getScript('http://strapdownjs.com/v/0.2/strapdown.js',
+							function() {
+								buildTOC()
+								//$('.navbar').first().remove()
+								$('#content').addClass('well')
+								if(DEV) makeLinksLocal()
+								$('body').scrollspy({ target: '#toc' })
+								$('#myScrollspy').on('activate.bs.scrollspy', function () {
+									console.log(this)
+								})
+
+							})
+					
+				})
+	</script>
+
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="doc/tree.js"></script>
+	
+</body>
+</html>

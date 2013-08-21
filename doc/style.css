@@ -1,0 +1,70 @@
+#toc {
+	position: fixed;
+	top: 70px;
+	left: 0px;
+	width: 200px;
+	padding: 10px;
+}
+
+.navbar {
+   width: 222px;
+}
+.navbar #headline {
+    margin-left: 20px;
+}
+
+body {
+	 background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='100' height='100'><line x1='40' y1='30' x2='75' y2='30' style='stroke:rgb(100,100,100);stroke-width:2'/></svg>"); 
+	 background-repeat: repeat-y; 
+	 background-position: right top;
+ 	 background-attachment: scroll;
+
+}
+
+.toc-h2 {
+	padding-left: 0px;
+}
+.toc-h3 {
+	padding-left: 15px;
+}
+.toc-h4 {
+	padding-left: 30px;
+}
+#toc-list{
+	list-style-type:none;
+}
+#toc-list a{
+	text-decoration: none;
+}
+#toc-list li:HOVER{
+	border-right: 2px solid #ccc;
+}
+
+#chart {
+	left: 0;
+    position: fixed;
+    top: 0px;
+    width: 50%;
+    height: 100%;
+	z-index:-10;
+}
+
+#content{
+	margin-left: 250px;
+	padding-left: 20px;
+	margin-top: 10px;
+	width: 70%;
+	background-color: white;
+	opacity: 0.95;
+}
+
+/* SVG styling */
+svg {
+	width: 840px;
+	height: 600px;
+	font-family: helvetica, sans-serif;
+}
+
+path, line {
+	stroke: #777;
+}

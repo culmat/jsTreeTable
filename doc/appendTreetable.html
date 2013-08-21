@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>appendTreetable</title>
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+
+
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+<!-- treetable -->
+<link rel="stylesheet"
+	href="http://ludo.cubicphuse.nl/jquery-treetable/stylesheets/jquery.treetable.css" />
+<link rel="stylesheet"
+	href="http://ludo.cubicphuse.nl/jquery-treetable/stylesheets/jquery.treetable.theme.default.css" />
+<script type="text/javascript"
+	src="http://ludo.cubicphuse.nl/jquery-treetable/javascripts/src/jquery.treetable.js"></script>
+<script src="../treeTable.js"></script>
+<style type="text/css">
+table.jsTT {
+	margin-top: 10px;
+	border-collapse: collapse;
+	table-layout: fixed;
+	border: 1px solid #686a66;
+}
+
+table.jsTT th {
+	background-color: #9a9c97;
+	color: white;
+	border: 1px solid #686a66;
+	padding-left: 8px;
+	padding-right: 8px;
+	text-align: left;
+}
+/*
+686a66
+9a9c97
+c6c9c3
+dbdfd8
+f1f2f0
+
+*/
+table.jsTT td {
+	position: static;
+	border-left: 1px solid #999;
+	border-right: 1px solid #999;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+table.jsTT tr[data-tt-level="1"] td:first-child {
+	background-color: #c6c9c3;
+}
+
+table.jsTT tr[data-tt-level="2"] td:first-child {
+	background-color: #dbdfd8;
+}
+
+table.jsTT tr[data-tt-level="3"] td:first-child {
+	background-color: #f1f2f0;
+}
+
+table.jsTT tr:hover td {
+	font-style: italic;
+	border-bottom: 1px solid #999;
+}
+
+table.jsTT tr:hover td:first-child {
+	font-style: inherit;
+	border-bottom: inherit;
+}
+</style>
+
+</head>
+<body>
+
+	<table border="1" id="params">
+		<tr>
+			<td><input type="checkbox"></td>
+			<td>slider</td>
+			<td><input type="text" size="40" value="true"></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox"></td>
+			<td>controls</td>
+			<td><textarea rows="5" cols="40">{
+  $('&lt;button&gt;Kaboom&lt;/button&gt;'), 
+  $('&lt;span&gt;Some text&lt;/span&gt;')
+}</textarea></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox"></td>
+			<td>depthFirst</td>
+			<td><textarea rows="15" cols="80">function enrich(node) {
+	var desc = 0
+	var childCount = 0
+	if (node['children']) {
+		$.each(node['children'], function(i, child) {
+			desc += child['descendants'] + 1
+		})
+		childCount = node['children'].length
+	}
+	node['descendants'] = desc
+	node['childCount'] = childCount
+}</textarea></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox"></td>
+			<td>renderedAttr</td>
+			<td><textarea rows="5" cols="40">{
+  name : 'Name',
+  geb : 'Year of birth'
+}</textarea>
+		</tr>
+		<tr>
+			<td><input type="checkbox"></td>
+			<td>renderer</td>
+			<td><textarea rows="5" cols="40"></textarea></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox"></td>
+			<td>tableAttributes</td>
+			<td><input type="text" size="40" value="true"></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox"></td>
+			<td>initialExpandLevel</td>
+			<td><input type="text" size="40" value="true"></td>
+		</tr>
+	</table>
+	<div id="paramsJSON">
+	</div>
+
+	<hr />
+	<div id="container">
+		table loading <img height="20" width="20"
+			src="http://www.markit.com/assets/images/spinner.gif">
+	</div>
+	<hr />
+
+
+
+
+
+
+
+	<script type="text/javascript">
+		function makeData() {
+			return [ {
+				name : 'Harold',
+				geb : 1933,
+				parent : 'Robert'
+			}, {
+				name : 'Robert',
+				geb : 1903,
+				parent : 'John'
+			}, {
+				name : 'Thomas',
+				geb : 2008,
+				parent : 'Mathew'
+			}, {
+				name : 'Mathew',
+				geb : 1977,
+				parent : 'Harold'
+			}, {
+				name : 'Andrew',
+				geb : 1974,
+				parent : 'Harold'
+			}, {
+				name : 'Kate',
+				geb : 2008,
+				parent : 'Mathew'
+			}, {
+				name : 'Walter',
+				geb : 1900,
+				parent : 'John'
+			}, {
+				name : 'Michelle',
+				geb : 2023,
+				parent : 'Thomas'
+			}, {
+				name : 'James',
+				geb : 1900,
+				parent : 'Kate'
+			} ]
+		}
+
+		function enrich(node) {
+			var desc = 0
+			var childCount = 0
+			if (node['children']) {
+				$.each(node['children'], function(i, child) {
+					desc += child['descendants'] + 1
+				})
+				childCount = node['children'].length
+			}
+			node['descendants'] = desc
+			node['childCount'] = childCount
+		}
+
+		var options = {
+			mountPoint : $('#container'),
+			idAttr : 'name',
+			renderedAttr : {
+				name : 'Name',
+				childCount : '# Children',
+				descendants : '# Descendants',
+				geb : 'Year of birth'
+			},
+			depthFirst : enrich,
+			replaceContent : true,
+			tableAttributes : {
+				class : 'jsTT'
+			}
+		}
+
+		com_github_culmat_jsTreeTable.register(this)
+
+		var jsTT = com_github_culmat_jsTreeTable
+
+		appendTreetable(jsTT.makeTree(makeData(), 'name'), options)
+
+		jsTT.appendTreetable(jsTT.makeTree(makeData(), 'name'), {
+			idAttr : 'name',
+			initialExpandLevel : 2,
+			slider : true
+		})
+	</script>
+
+
+</body>
+</html>
