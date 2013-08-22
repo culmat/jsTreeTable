@@ -35,14 +35,28 @@ var com_github_culmat_jsTreeTable =  (function(){
 		})
 		var tree = []
 		$.each(data_tmp, function(i, entry) {
-			var parent = byName[entry[refAttr]]
-			if (parent) {
-				if (!parent[childrenAttr]) {
-					parent[childrenAttr] = []
-				}
-				parent[childrenAttr].push(entry)
-			} else {
+			var parents = entry[refAttr]
+			if(!$.isArray(parents)){
+				parents = [parents]
+			}
+			if(parents.length == 0){
 				tree.push(entry)
+			} else {
+				var inTree = false;
+				$.each(parents, function(i,parentID){
+					var parent = byName[parentID]
+					if (parent) {
+						if (!parent[childrenAttr]) {
+							parent[childrenAttr] = []
+						}
+						if($.inArray(entry, parent[childrenAttr])< 0)
+							parent[childrenAttr].push(entry)
+						inTree = true
+					} 
+				})
+				if(!inTree){
+					tree.push(entry)
+				}
 			}
 		})
 		return tree
