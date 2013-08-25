@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>renderTree</title>
+<script src="http://code.jquery.com/jquery-2.0.3.js"></script>
+<script src="../treeTable.js"></script>
+<style type="text/css">
+td {
+	border: 1px solid #999;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+</style>
+
+
+</head>
+<body>
+	<button onClick='window.location="view-source:" + window.location.href'>View
+		Source</button>
+	<button onClick='window.history.back()'>Back</button>
+	<br />
+
+	<table id="table">
+		<tr>
+			<th>name</th>
+			<th>area (km²)</th>
+		</tr>
+		<tr data-tt-id="america">
+			<td>America</td>
+			<td></td>
+		</tr>
+		<tr data-tt-id="NA" data-tt-parent-id="america">
+			<td>North America</td>
+			<td></td>
+		</tr>
+		<tr data-tt-id="SA" data-tt-parent-id="america">
+			<td>South America</td>
+			<td></td>
+		</tr>
+		<tr data-tt-id="arg" data-tt-parent-id="SA">
+			<td>Argentina</td>
+			<td>2766890</td>
+		</tr>
+		<tr data-tt-id="bol" data-tt-parent-id="SA">
+			<td>Bolivia</td>
+			<td>1098580</td>
+		</tr>
+		<tr data-tt-id="bra" data-tt-parent-id="SA">
+			<td>Brazil</td>
+			<td>8511965</td>
+		</tr>
+		<tr data-tt-id="para" data-tt-parent-id="bra">
+			<td>Para</td>
+			<td>1247689</td>
+		</tr>
+	</table>
+
+	<script type="text/javascript">
+		com_github_culmat_jsTreeTable.register(this)
+
+		treeTable($('#table'))
+	</script>
+
+
+</body>
+</html>
