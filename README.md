@@ -1,13 +1,14 @@
-# jsTreeTable
+# [jsTreeTable](http://culmat.github.io/jsTreeTable/)
 
 jsTreeTable is a clone of [jQuery treetable](http://ludo.cubicphuse.nl/jquery-treetable/).
-I wrote it, because integrating the original with Atlassian products was way too complicated. This version is very light weight and and uses compatible table definitions.
+I wrote it, because integrating the original with Atlassian products was too complicated. 
+This version is very light weight and provides some helper functions for dynamic tables.
 
 ## Features
 
 * unobtrusive
 * light weigth
-* self contained: no external images ...
+* self contained: no external images, css ...
 * helper functions for dynamic tables
 * [jQuery treetable](http://ludo.cubicphuse.nl/jquery-treetable/) compatible
 
@@ -23,6 +24,16 @@ If you want to use the [slider](#slider) function, some version of [jQuery UI](h
 ```html
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+```
+
+jsTreeTable HEAD 
+```html
+<script src="http://culmat.github.io/jsTreeTable/treeTable.js"></script>
+```
+or [any release](https://github.com/culmat/jsTreeTable/tree/gh-pages/release).
+
+```html
+<script src="http://culmat.github.io/jsTreeTable/release/treeTable.1.0.js"></script>
 ```
 
 jsTreeTable registers itself under the variable *com_github_culmat_jsTreeTable*.
@@ -52,7 +63,8 @@ Either provide pre rendered tables ...
   </tr>
 </table>
 ```
-... or dynamically create the table from any data structure, e.g. JSON obtained by an AJAX call.
+... or dynamically create the table from any data structure, e.g. JSON obtained by an AJAX call. 
+See [makeTree](#maketree) API.
 
 ## API
 
