@@ -64,11 +64,15 @@
 								buildTOC()
 								//$('.navbar').first().remove()
 								$('#content').addClass('well')
+								console.log($('#content p').first().text())
+								//$('#content p').first().append($('<span></span>'))
 								if(DEV) makeLinksLocal()
+								/*
 								$('body').scrollspy({ target: '#toc' })
 								$('#myScrollspy').on('activate.bs.scrollspy', function () {
 									console.log(this)
 								})
+								*/
 
 							})
 					

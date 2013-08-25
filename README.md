@@ -157,7 +157,7 @@ table | the table dom node with data-tt-* attributes | X |
 
 **Returns** the input parameter nodes
 
-For an example see [appendTreetable](#appendtreetable)
+[Example](http://culmat.github.io/jsTreeTable/doc/treeTable.html)
 
 ###   appendTreetable 
 

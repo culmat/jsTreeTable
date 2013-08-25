@@ -6,75 +6,17 @@
 <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 
 
-<link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" 	href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
-<!-- treetable -->
-<link rel="stylesheet"
-	href="http://ludo.cubicphuse.nl/jquery-treetable/stylesheets/jquery.treetable.css" />
-<link rel="stylesheet"
-	href="http://ludo.cubicphuse.nl/jquery-treetable/stylesheets/jquery.treetable.theme.default.css" />
-<script type="text/javascript"
-	src="http://ludo.cubicphuse.nl/jquery-treetable/javascripts/src/jquery.treetable.js"></script>
 <script src="../treeTable.js"></script>
-<style type="text/css">
-table.jsTT {
-	margin-top: 10px;
-	border-collapse: collapse;
-	table-layout: fixed;
-	border: 1px solid #686a66;
-}
+<link rel="stylesheet" type="text/css" href="../style/simple.css">
 
-table.jsTT th {
-	background-color: #9a9c97;
-	color: white;
-	border: 1px solid #686a66;
-	padding-left: 8px;
-	padding-right: 8px;
-	text-align: left;
-}
-/*
-686a66
-9a9c97
-c6c9c3
-dbdfd8
-f1f2f0
-
-*/
-table.jsTT td {
-	position: static;
-	border-left: 1px solid #999;
-	border-right: 1px solid #999;
-	padding-left: 8px;
-	padding-right: 8px;
-}
-
-table.jsTT tr[data-tt-level="1"] td:first-child {
-	background-color: #c6c9c3;
-}
-
-table.jsTT tr[data-tt-level="2"] td:first-child {
-	background-color: #dbdfd8;
-}
-
-table.jsTT tr[data-tt-level="3"] td:first-child {
-	background-color: #f1f2f0;
-}
-
-table.jsTT tr:hover td {
-	font-style: italic;
-	border-bottom: 1px solid #999;
-}
-
-table.jsTT tr:hover td:first-child {
-	font-style: inherit;
-	border-bottom: inherit;
-}
-</style>
 
 </head>
 <body>
+<button onClick='window.location="view-source:" + window.location.href'>View Source</button>
+<button onClick='window.history.back()'>Back</button><br/>
 
 	<table border="1" id="params">
 		<tr>

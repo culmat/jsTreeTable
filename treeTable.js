@@ -162,6 +162,20 @@ var com_github_culmat_jsTreeTable =  (function(){
 				}
 			})
 		}
+		function getLevel(node){
+			var level = node.attr('data-tt-level')
+			if(level != undefined ) return parseInt(level)
+			var parentID = node.attr('data-tt-parent-id')
+			if( parentID == undefined){
+				return 0
+			} else {
+				return getLevel($('tr[data-tt-id="'+parentID+'"]', table).first()) + 1
+			} 
+		}
+		$("tr[data-tt-id]", table).each(function(i,node){
+			node = $(node)
+			node.attr('data-tt-level', getLevel(node)) 
+		})
 		var dat = $("tr[data-tt-level]", table).get()
 		$.each(dat,  function(j, d) {
 			d.trChildrenVisible = true
