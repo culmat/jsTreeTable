@@ -10,32 +10,43 @@
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
 <script src="../treeTable.js"></script>
+<script src="makeData.js"></script>
 <link rel="stylesheet" type="text/css" href="../style/simple.css">
-
+<style type="text/css" media="screen">
+#editor {
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 4px 0 4px;
+    height: 600px;
+    margin-top: 5px;
+    color: #000000;
+    font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
+    font-size: 12px;
+    line-height: normal;
+    overflow: hidden;
+    position: relative;
+}
+.left {
+    float: left;
+    width: 48%;   
+}
+.right {
+ 	float: right;
+    margin-left: 50%px;
+    width: 48%;   
+}
+.orange {
+	background-color : orange;
+}
+</style>
 
 </head>
 <body>
 <button onClick='window.location="view-source:" + window.location.href'>View Source</button>
-<button onClick='window.history.back()'>Back</button><br/>
+<button onClick='window.history.back()'>Back</button>
+<button id='run' onClick='eval(editor.getValue())'>Run</button><br/>
+<div id="editor" class="left">// Go ahed and play ...
 
-	<table border="1" id="params">
-		<tr>
-			<td><input type="checkbox"></td>
-			<td>slider</td>
-			<td><input type="text" size="40" value="true"></td>
-		</tr>
-		<tr>
-			<td><input type="checkbox"></td>
-			<td>controls</td>
-			<td><textarea rows="5" cols="40">{
-  $('&lt;button&gt;Kaboom&lt;/button&gt;'), 
-  $('&lt;span&gt;Some text&lt;/span&gt;')
-}</textarea></td>
-		</tr>
-		<tr>
-			<td><input type="checkbox"></td>
-			<td>depthFirst</td>
-			<td><textarea rows="15" cols="80">function enrich(node) {
+function enrich(node) {
 	var desc = 0
 	var childCount = 0
 	if (node['children']) {
@@ -46,131 +57,70 @@
 	}
 	node['descendants'] = desc
 	node['childCount'] = childCount
-}</textarea></td>
-		</tr>
-		<tr>
-			<td><input type="checkbox"></td>
-			<td>renderedAttr</td>
-			<td><textarea rows="5" cols="40">{
-  name : 'Name',
-  geb : 'Year of birth'
-}</textarea>
-		</tr>
-		<tr>
-			<td><input type="checkbox"></td>
-			<td>renderer</td>
-			<td><textarea rows="5" cols="40"></textarea></td>
-		</tr>
-		<tr>
-			<td><input type="checkbox"></td>
-			<td>tableAttributes</td>
-			<td><input type="text" size="40" value="true"></td>
-		</tr>
-		<tr>
-			<td><input type="checkbox"></td>
-			<td>initialExpandLevel</td>
-			<td><input type="text" size="40" value="true"></td>
-		</tr>
-	</table>
-	<div id="paramsJSON">
-	</div>
+}
 
-	<hr />
-	<div id="container">
+function renderItem(tr, item){
+	tr.append($('&lt;td&gt;' + item.name.toUpperCase() + '&lt;/td&gt;'))
+	tr.append($('&lt;td colspan="5"&gt;&lt;a " href="http://en.wikipedia.org/wiki/'+item.geb+'" target="inWikipedia" &gt;' + item.geb + '&lt;/a&gt;&lt;/td&gt;'))
+}
+
+var options = {
+	mountPoint : $('#container'),
+	idAttr : 'name',
+	renderedAttr : {
+		name : 'Name',
+		childCount : '# Children',
+		descendants : '# Descendants',
+		geb : 'Year of birth'
+	},
+	depthFirst : enrich,
+	replaceContent : true,
+	tableAttributes : {
+		// class : 'orange'
+	},
+	slider :true,
+	initialExpandLevel : 4,
+	//renderer : renderItem,
+	controls : [
+		//$('&lt;button onclick="alert(jsTreeTable)"&gt;Show version&lt;/button&gt;'),
+		//$('&lt;span&gt;Just some text&lt;/span&gt;')		
+	]
+}
+
+appendTreetable(makeTree(makeData(), 'name'), options)</div>	
+
+	<hr class="right"/>
+	<div id="container" class="right">
 		table loading <img height="20" width="20"
 			src="http://www.markit.com/assets/images/spinner.gif">
 	</div>
-	<hr />
-
-
-
-
-
-
+	<hr class="right"/>
 
 	<script type="text/javascript">
-		function makeData() {
-			return [ {
-				name : 'Harold',
-				geb : 1933,
-				parent : 'Robert'
-			}, {
-				name : 'Robert',
-				geb : 1903,
-				parent : 'John'
-			}, {
-				name : 'Thomas',
-				geb : 2008,
-				parent : 'Mathew'
-			}, {
-				name : 'Mathew',
-				geb : 1977,
-				parent : 'Harold'
-			}, {
-				name : 'Andrew',
-				geb : 1974,
-				parent : 'Harold'
-			}, {
-				name : 'Kate',
-				geb : 2008,
-				parent : 'Mathew'
-			}, {
-				name : 'Walter',
-				geb : 1900,
-				parent : 'John'
-			}, {
-				name : 'Michelle',
-				geb : 2023,
-				parent : 'Thomas'
-			}, {
-				name : 'James',
-				geb : 1900,
-				parent : 'Kate'
-			} ]
-		}
-
-		function enrich(node) {
-			var desc = 0
-			var childCount = 0
-			if (node['children']) {
-				$.each(node['children'], function(i, child) {
-					desc += child['descendants'] + 1
-				})
-				childCount = node['children'].length
-			}
-			node['descendants'] = desc
-			node['childCount'] = childCount
-		}
-
-		var options = {
-			mountPoint : $('#container'),
-			idAttr : 'name',
-			renderedAttr : {
-				name : 'Name',
-				childCount : '# Children',
-				descendants : '# Descendants',
-				geb : 'Year of birth'
-			},
-			depthFirst : enrich,
-			replaceContent : true,
-			tableAttributes : {
-				class : 'jsTT'
-			}
-		}
-
 		com_github_culmat_jsTreeTable.register(this)
-
-		var jsTT = com_github_culmat_jsTreeTable
-
-		appendTreetable(jsTT.makeTree(makeData(), 'name'), options)
-
-		jsTT.appendTreetable(jsTT.makeTree(makeData(), 'name'), {
-			idAttr : 'name',
-			initialExpandLevel : 2,
-			slider : true
-		})
 	</script>
 
+
+<script src="http://ajaxorg.github.io/ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.getSession().setMode("ace/mode/javascript");
+    editor.commands.addCommand({
+        name: 'run',
+        bindKey: {win: 'Ctrl-x',  mac: 'Command-x'},
+        exec: function(editor) {
+        	eval(editor.getValue())
+        },
+        readOnly: false
+    });
+    eval(editor.getValue());
+    editor.on("focus", function() {
+    	$('#run').html('Run ctrl/cmd + x')
+    });
+    editor.on("blur", function() { 
+    	$('#run').html('Run')
+    });
+</script>
 
 </body>
 </html>

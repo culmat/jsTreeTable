@@ -4,6 +4,15 @@
 <title>jsTreeTable</title>
 <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 <link rel="stylesheet" type="text/css" href="doc/style.css">
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="style/simple.css">
+<link rel="stylesheet" 	href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+<script src="treeTable.js"></script>
+<script src="doc/makeData.js"></script>
+
 </head>
 <body>
 <div id="chart" >
@@ -64,8 +73,17 @@
 								buildTOC()
 								//$('.navbar').first().remove()
 								$('#content').addClass('well')
-								console.log($('#content p').first().text())
-								//$('#content p').first().append($('<span></span>'))
+								var jsTT = {}
+								com_github_culmat_jsTreeTable.register(jsTT)
+								var options = {
+									mountPoint : $('#content p').first(),
+									idAttr : 'name',
+									replaceContent : false,
+									slider :true,
+									initialExpandLevel : 3,
+									controls : [$('<br/><br/>')]
+								}
+								jsTT.appendTreetable(jsTT.makeTree(makeData(), 'name'), options)
 								if(DEV) makeLinksLocal()
 								/*
 								$('body').scrollspy({ target: '#toc' })

@@ -52,7 +52,7 @@ alert(jsTreeTable)
 
 
 ## Providing data
-Either provide pre rendered tables ...
+Either provide pre rendered tables ([see treeTable Example](doc/treeTable.html))...
 ```html
 <table>
   <tr data-tt-id="1">
