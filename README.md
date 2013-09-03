@@ -198,3 +198,14 @@ alert(com_github_culmat_jsTreeTable.jsTreeTable)
 ```
 
 [Example](http://culmat.github.io/jsTreeTable/doc/version.html)
+
+## Source
+
+[Github project](https://github.com/culmat/jsTreeTable/)
+
+## Alternatives
+
+[SlickGrid](http://wiki.github.com/mleibman/SlickGrid)
+[jQuery treetable](http://ludo.cubicphuse.nl/jquery-treetable/)
+
+
