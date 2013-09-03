@@ -206,6 +206,7 @@ alert(com_github_culmat_jsTreeTable.jsTreeTable)
 ## Alternatives
 
 [SlickGrid](http://wiki.github.com/mleibman/SlickGrid)
+
 [jQuery treetable](http://ludo.cubicphuse.nl/jquery-treetable/)
 
 
