@@ -58,7 +58,7 @@
 	
 		var DEV = window.location.protocol == 'file:'
 		var url = 'http://culmat.github.io/jsTreeTable/README.md'
-		var markdown_io = 'http://markdown.io/_raw/' + url
+		var markdown_io = url //'http://markdown.io/_raw/' + url
 		if(DEV)
 			markdown_io = 'README.md'
 		$.ajax({
