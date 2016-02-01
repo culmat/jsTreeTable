@@ -175,7 +175,7 @@ option | description | required | default
 idAttr | the attribute used to identify a node |  | 'id' 
 childrenAttr | the attribute used to navigate the hierarchical tree structure|  | 'children' 
 controls | controls you want to add to the top of the table  | | 
-mountPoint | where to appaend the table into the DOM |  | $('body')
+mountPoint | where to append the table into the DOM |  | $('body')
 depthFirst | funtion to be applied prior to rendering see [depthFirst](#depthfirst)|  | 
 renderer | see [renderTree](#rendertree) |  | 
 renderedAttr |see [renderTree](#rendertree) | |
