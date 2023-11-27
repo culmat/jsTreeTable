@@ -14,7 +14,7 @@
 }
 
 body {
-	 background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='100' height='100'><line x1='40' y1='30' x2='75' y2='30' style='stroke:rgb(100,100,100);stroke-width:2'/></svg>"); 
+	 background-image:url("data:image/svg+xml;utf8,<svg xmlns='https://www.w3.org/2000/svg' version='1.1' width='100' height='100'><line x1='40' y1='30' x2='75' y2='30' style='stroke:rgb(100,100,100);stroke-width:2'/></svg>"); 
 	 background-repeat: repeat-y; 
 	 background-position: right top;
  	 background-attachment: scroll;

@@ -2,13 +2,13 @@
 <html>
 <head>
 <title>jsTreeTable</title>
-<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
 <link rel="stylesheet" type="text/css" href="doc/style.css">
-<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="style/simple.css">
-<link rel="stylesheet" 	href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" 	href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
 <script src="treeTable.js"></script>
 <script src="doc/makeData.js"></script>
@@ -50,15 +50,15 @@
 		function makeLinksLocal(){
 			$('a').each(function(i, link){
 				var href = $(link).attr('href')
-				var prefix = 'http://culmat.github.io/jsTreeTable/'
+				var prefix = 'https://culmat.github.io/jsTreeTable/'
 				if(href.indexOf(prefix) == 0)
 					$(link).attr('href',href.substr(prefix.length))
 			})
 		}
 	
 		var DEV = window.location.protocol == 'file:'
-		var url = 'http://culmat.github.io/jsTreeTable/README.md'
-		var markdown_io = url //'http://markdown.io/_raw/' + url
+		var url = 'https://culmat.github.io/jsTreeTable/README.md'
+		var markdown_io = url //'https://markdown.io/_raw/' + url
 		if(DEV)
 			markdown_io = 'README.md'
 		$.ajax({
@@ -68,7 +68,7 @@
 				function(data) {
 					
 					$('xmp').text(data)
-					$.getScript('http://strapdownjs.com/v/0.2/strapdown.js',
+					$.getScript('https://strapdownjs.com/v/0.2/strapdown.js',
 							function() {
 								buildTOC()
 								//$('.navbar').first().remove()
@@ -97,7 +97,7 @@
 				})
 	</script>
 
-<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="doc/tree.js"></script>
 	
 </body>

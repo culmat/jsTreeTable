@@ -1,6 +1,6 @@
-# [jsTreeTable](http://culmat.github.io/jsTreeTable/)
+# [jsTreeTable](https://culmat.github.io/jsTreeTable/)
 
-jsTreeTable is a clone of [jQuery treetable](http://ludo.cubicphuse.nl/jquery-treetable/).
+jsTreeTable is a clone of [jQuery treetable](https://ludo.cubicphuse.nl/jquery-treetable/).
 I wrote it, because integrating the original with Atlassian products was too complicated. 
 This version is very light weight and provides some helper functions for dynamic tables.
 
@@ -10,30 +10,30 @@ This version is very light weight and provides some helper functions for dynamic
 * light weigth
 * self contained: no external images, css ...
 * helper functions for dynamic tables
-* [jQuery treetable](http://ludo.cubicphuse.nl/jquery-treetable/) compatible
+* [jQuery treetable](https://ludo.cubicphuse.nl/jquery-treetable/) compatible
 
 ## Requirements
-Some version of [jQuery](http://jquery.com/), i.e.
+Some version of [jQuery](https://jquery.com/), i.e.
 
 ```html
-<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
 ```
 
-If you want to use the [slider](#slider) function, some version of [jQuery UI](http://jqueryui.com/), i.e.
+If you want to use the [slider](#slider) function, some version of [jQuery UI](https://jqueryui.com/), i.e.
 
 ```html
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 ```
 
 jsTreeTable HEAD 
 ```html
-<script src="http://culmat.github.io/jsTreeTable/treeTable.js"></script>
+<script src="https://culmat.github.io/jsTreeTable/treeTable.js"></script>
 ```
 or [any release](https://github.com/culmat/jsTreeTable/tree/gh-pages/release).
 
 ```html
-<script src="http://culmat.github.io/jsTreeTable/release/treeTable.1.0.js"></script>
+<script src="https://culmat.github.io/jsTreeTable/release/treeTable.1.0.js"></script>
 ```
 
 jsTreeTable registers itself under the variable *com_github_culmat_jsTreeTable*.
@@ -83,7 +83,7 @@ func | the function to apply recursivly | X |
 childrenAttr | the attribute used to recursivly dig into the tree|  | 'children' 
 **Returns** the input parameter tree.
 
-[Example](http://culmat.github.io/jsTreeTable/doc/depthFirst.html)
+[Example](https://culmat.github.io/jsTreeTable/doc/depthFirst.html)
 
 ###   makeTree
 
@@ -101,7 +101,7 @@ refAttr |  the attribute used by the children to reference their parent |  | 'pa
 childrenAttr | the attribute used to build the hierarchical tree structure|  | 'children' 
 **Returns** an array of tree roots.
 
-[Example](http://culmat.github.io/jsTreeTable/doc/makeTree.html)
+[Example](https://culmat.github.io/jsTreeTable/doc/makeTree.html)
 
 ###   renderTree 
 
@@ -127,7 +127,7 @@ tableAttributes |  additional table attributes (ie id or class). Can be useful f
 
 **Returns** an html table as javascript object.
 
-[Example](http://culmat.github.io/jsTreeTable/doc/renderTree.html)
+[Example](https://culmat.github.io/jsTreeTable/doc/renderTree.html)
 
 ###   attr2attr
 
@@ -157,7 +157,7 @@ table | the table dom node with data-tt-* attributes | X |
 
 **Returns** the input parameter nodes
 
-[Example](http://culmat.github.io/jsTreeTable/doc/treeTable.html)
+[Example](https://culmat.github.io/jsTreeTable/doc/treeTable.html)
 
 ###   appendTreetable 
 
@@ -187,7 +187,7 @@ slider | wether to display an expand slider control | | false
 
 **Returns** an html table as javascript object obtained by calling [renderTree](#rendertree)
 
-[Example](http://culmat.github.io/jsTreeTable/doc/appendTreetable.html)
+[Example](https://culmat.github.io/jsTreeTable/doc/appendTreetable.html)
 
 ###   jsTreeTable 
 
@@ -197,7 +197,7 @@ A property holding the version of jsTreeTable
 alert(com_github_culmat_jsTreeTable.jsTreeTable)
 ```
 
-[Example](http://culmat.github.io/jsTreeTable/doc/version.html)
+[Example](https://culmat.github.io/jsTreeTable/doc/version.html)
 
 ## Source
 
@@ -205,8 +205,8 @@ alert(com_github_culmat_jsTreeTable.jsTreeTable)
 
 ## Alternatives
 
-[SlickGrid](http://wiki.github.com/mleibman/SlickGrid)
+[SlickGrid](https://wiki.github.com/mleibman/SlickGrid)
 
-[jQuery treetable](http://ludo.cubicphuse.nl/jquery-treetable/)
+[jQuery treetable](https://ludo.cubicphuse.nl/jquery-treetable/)
 
 
