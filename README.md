@@ -33,7 +33,7 @@ jsTreeTable HEAD
 or [any release](https://github.com/culmat/jsTreeTable/tree/gh-pages/release).
 
 ```html
-<script src="https://culmat.github.io/jsTreeTable/release/treeTable.1.0.js"></script>
+<script src="https://culmat.github.io/jsTreeTable/release/1.0/treeTable.js"></script>
 ```
 
 jsTreeTable registers itself under the variable *com_github_culmat_jsTreeTable*.
