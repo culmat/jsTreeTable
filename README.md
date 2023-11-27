@@ -16,14 +16,14 @@ This version is very light weight and provides some helper functions for dynamic
 Some version of [jQuery](https://jquery.com/), i.e.
 
 ```html
-<script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 ```
 
 If you want to use the [slider](#slider) function, some version of [jQuery UI](https://jqueryui.com/), i.e.
 
 ```html
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css" />
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
 ```
 
 jsTreeTable HEAD 
