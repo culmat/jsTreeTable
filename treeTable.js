@@ -109,7 +109,7 @@ var com_github_culmat_jsTreeTable =  (function(){
 			}
 			if (renderer) {
 				renderer($(tr), node)
-			}else if (attrs) {
+			} else if (attrs) {
 				$.each(attrs, function(attr, desc) {
 					$(tr).append($('<td>' + node[attr] + '</td>'))
 				})
