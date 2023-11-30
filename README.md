@@ -105,7 +105,7 @@ childrenAttr | the attribute used to build the hierarchical tree structure|  | '
 
 ###   renderTree 
 
-Renders a tree data structure into a dom table with css class *jsTT*, seeting the following attributes
+Renders a tree data structure into a DOM table with CSS class *jsTT*, setting the following attributes
 
 * data-tt-id
 * data-tt-level
