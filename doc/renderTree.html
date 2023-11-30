@@ -27,45 +27,45 @@ td {
 
 		var data = [{
 			      id : 'Harold',
-			      geb : 1933,
+			      yob : 1933,
 			      parent : 'Robert'
 			    }, {
 			      id : 'Robert',
-			      geb : 1903,
+			      yob : 1903,
 			      parent : 'John'
 			    }, {
 			      id : 'Thomas',
-			      geb : 2008,
+			      yob : 2008,
 			      parent : 'Mathew'
 			    }, {
 			      id : 'Mathew',
-			      geb : 1977,
+			      yob : 1977,
 			      parent : 'Harold'
 			    }, {
 			      id : 'Andrew',
-			      geb : 1974,
+			      yob : 1974,
 			      parent : 'Harold'
 			    }, {
 			      id : 'Kate',
-			      geb : 2008,
+			      yob : 2008,
 			      parent : 'Mathew'
 			    }, {
 			      id : 'Walter',
-			      geb : 1900,
+			      yob : 1900,
 			      parent : 'John'
 			    }, {
 			      id : 'Michelle',
-			      geb : 2023,
+			      yob : 2023,
 			      parent : 'Thomas'
 			    }
 			    , {
 			      id : 'James',
-			      geb : 1900,
+			      yob : 1900,
 			      parent : 'Kate'
 			    }]
 			    
 			   var tree =  makeTree(data)
-			   var rendered = renderTree(tree) 
+			   var rendered = renderTree(tree, 'children', 'id', {id: 'Name' , yob : 'Born in'}) 
 			   
 			    $('body').append(rendered)
 	</script>

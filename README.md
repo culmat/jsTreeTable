@@ -121,7 +121,7 @@ paramter | description | required | default
 tree | the tree data | X | 
 childrenAttr | the attribute used to navigate the hierarchical tree structure|  | 'children' 
 idAttr | the attribute used to identify a node |  | 'id' 
-attrs |  a map of attribute names and labels to be rendered | all attributes except the childrenAttr, label = name | 
+attrs |  a map of attribute names and labels to be rendered | all attributes except the childrenAttr e.g. {id: 'Name' , yob : 'Born in'} | 
 renderer |  a rendreing function for custom rendering  |  | 
 tableAttributes |  additional table attributes (ie id or class). Can be useful for styling. The css class *jsTT* will always be added.  |  | 
 
